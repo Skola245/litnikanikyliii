@@ -173,7 +173,8 @@
         };
 
         function showSection(key) {
-            document.getElementById('content').innerHTML = sections[key];
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = sections[key]; // Оновлюємо вміст
         }
 
         // Таймер
