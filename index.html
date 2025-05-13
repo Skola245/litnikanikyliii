@@ -13,6 +13,9 @@
             background: linear-gradient(270deg, #1c1c3c, #2b5876);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+
+            /* Курсор у вигляді кухля пива */
+            cursor: url('https://i.imgur.com/FIBD5YX.png'), auto;
         }
 
         @keyframes gradientBG {
@@ -80,4 +83,124 @@
 
         .countdown {
             font-size: 1.2em;
-            margin-top: 
+            margin-top: 10px;
+            color: #90ee90;
+        }
+
+        .particle {
+            position: fixed;
+            top: -10px;
+            background: white;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Моя поїздка до Чехії 🇨🇿</h1>
+        <div class="countdown" id="countdown"></div>
+    </header>
+
+    <main>
+        <div style="text-align:center;">
+            <button onclick="showSection('prague')">Прага</button>
+            <button onclick="showSection('kralupy')">Кралупи над Влтавою</button>
+        </div>
+
+        <div id="content" class="section-content">
+            <p>Натисни кнопку, щоб дізнатися більше про мої плани в Чехії!</p>
+        </div>
+    </main>
+
+    <script>
+        const sections = {
+            prague: `
+                <h2>Прага – серце Європи</h2>
+                <p>Прага — одна з найстаріших та найкрасивіших столиць Європи. Її історія налічує понад 1 100 років. 
+                Колись тут правили чеські королі та імператори Священної Римської імперії. Старе місто Праги — справжній музей під відкритим небом.</p>
+                
+                <ul>
+                    <li>🕍 <b>Карлів міст</b> — один з найвідоміших мостів світу, побудований у 14 столітті.</li>
+                    <li>⛪ <b>Празький град</b> — найбільший замковий комплекс у світі, офіційна резиденція президента Чехії.</li>
+                    <li>🕰️ <b>Астрономічний годинник</b> на Староміській площі — працює з 1410 року!</li>
+                    <li>🌉 Вузькі середньовічні вулички, річка Влтава та готичні собори створюють магічну атмосферу.</li>
+                </ul>
+
+                <img src="https://i.imgur.com/4pdqvjo.jpg" alt="Прага">
+            `,
+            kralupy: `
+                <h2>Кралупи над Влтавою</h2>
+                <p>Кралупи над Влтавою — затишне містечко недалеко від Праги, де я буду жити під час мандрівки. 
+                Воно розташоване на мальовничому березі річки Влтава та має свою унікальну атмосферу.</p>
+
+                <ul>
+                    <li>🚶 Прогулянки набережною вздовж Влтави</li>
+                    <li>🏞️ Зелень, парки, спокій і тиша</li>
+                    <li>🛤️ Звідси легко дістатися до Праги потягом за 30 хвилин</li>
+                    <li>🕊️ Ідеальне місце для відпочинку після прогулянок столицею</li>
+                </ul>
+
+                <img src="https://i.imgur.com/Ap21f7j.jpeg" alt="Кралупи над Влтавою">
+            `
+        };
+
+        function showSection(key) {
+            document.getElementById('content').innerHTML = sections[key];
+        }
+
+        // Таймер
+        const tripDate = new Date("2025-05-31T00:00:00");
+        const countdown = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = tripDate - now;
+
+            if (diff <= 0) {
+                countdown.textContent = "Я вже в Чехії!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+            countdown.textContent = `До поїздки залишилося: ${days} днів, ${hours} годин, ${minutes} хвилин`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Падаючі частинки
+        function createParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (2 + Math.random() * 5) + 's';
+                particle.style.width = particle.style.height = (2 + Math.random() * 4) + 'px';
+                document.body.appendChild(particle);
+                setTimeout(() => {
+                    particle.remove();
+                }, 7000);
+            }
+        }
+
+        setInterval(createParticles, 1000);
+    </script>
+
+</body>
+</html>
