@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Моя подорож до Чехії</title>
     <style>
         body {
@@ -13,6 +13,9 @@
             background: linear-gradient(270deg, #1c1c3c, #2b5876);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+
+            /* Курсор у вигляді кухля пива */
+            cursor: url('https://i.imgur.com/FIBD5YX.png'), auto;
         }
 
         @keyframes gradientBG {
@@ -150,7 +153,7 @@
                     <li>🕊️ Ідеальне місце для відпочинку після прогулянок столицею</li>
                 </ul>
 
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kralupy_nad_Vltavou%2C_n%C3%A1dra%C5%BE%C3%AD.jpg/800px-Kralupy_nad_Vltavou%2C_n%C3%A1dra%C5%BE%C3%AD.jpg" alt="Кралупи над Влтавою">
+                <img src="https://i.imgur.com/Ap21f7j.jpeg" alt="Кралупи над Влтавою">
             `
         };
 
@@ -159,7 +162,7 @@
         }
 
         // Таймер
-        const tripDate = new Date("2025-06-15T00:00:00");
+        const tripDate = new Date("2025-05-31T00:00:00");
         const countdown = document.getElementById("countdown");
 
         function updateCountdown() {
