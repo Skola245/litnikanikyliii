@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Моя подорож до Чехії</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Додаємо красивий шрифт -->
     <style>
         /* Фон та ефекти для фону */
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Roboto', sans-serif;
             color: #fff;
-            overflow: hidden;
             background: linear-gradient(270deg, #1c1c3c, #2b5876);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             cursor: url('https://i.imgur.com/FIBD5YX.png'), auto;
+            overflow: hidden;
         }
 
         @keyframes gradientBG {
@@ -25,6 +26,7 @@
 
         /* Заголовки з неоновим ефектом */
         h1, h2 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 3em;
             text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
             animation: neonText 1.5s alternate infinite;
@@ -35,7 +37,7 @@
             100% { text-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff; }
         }
 
-        /* Анімація при прокручуванні */
+        /* Секції з плавними переходами */
         .section {
             opacity: 0;
             transform: translateY(100px);
@@ -63,15 +65,18 @@
             padding: 12px 24px;
             border: none;
             border-radius: 12px;
-            font-size: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
             cursor: pointer;
-            background-color: #ffffff30;
+            background-color: #ff00ff;
             color: #fff;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         button:hover {
-            background-color: #ffffff60;
+            background-color: #ff69b4;
+            transform: scale(1.1);
         }
 
         img {
@@ -82,12 +87,13 @@
         }
 
         h2 {
+            font-family: 'Montserrat', sans-serif;
             color: #FFD700;
         }
 
         /* Таймер */
         .countdown {
-            font-size: 2em;
+            font-size: 1.5em;
             margin-top: 10px;
             color: #90ee90;
             font-family: 'Courier New', monospace;
@@ -121,36 +127,48 @@
             animation: fall linear infinite;
         }
 
-        /* Величезна анімація */
-        .big-animation {
-            position: absolute;
-            top: 50%;
+        /* Спливаючі вікна для додаткової інформації */
+        .popup {
+            position: fixed;
+            top: 20%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4em;
-            color: #ff00ff;
-            animation: bigAnimation 4s ease-in-out infinite;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            display: none;
+            max-width: 400px;
+            z-index: 9999;
         }
 
-        @keyframes bigAnimation {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.3);
-                opacity: 0.7;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
+        .popup h3 {
+            color: #ff00ff;
         }
+
+        .popup p {
+            font-size: 1.1em;
+        }
+
+        .popup button {
+            background-color: #ff00ff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .popup button:hover {
+            background-color: #ff69b4;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Додавання фонового ефекту -->
     <header>
         <h1>Моя подорож до Чехії 🇨🇿</h1>
         <div class="countdown" id="countdown"></div>
@@ -170,34 +188,25 @@
         <div class="big-animation">Подорож до Чехії!</div>
     </main>
 
+    <!-- Спливаюче вікно -->
+    <div id="popup" class="popup">
+        <h3>Додатково про Чехію!</h3>
+        <p>Чехія — це не тільки прекрасні міста, але й чудова природа. Ліси, гори і численні замки створюють неповторну атмосферу для відпочинку!</p>
+        <button onclick="closePopup()">Закрити</button>
+    </div>
+
     <script>
         const sections = {
             prague: `
                 <h2>Прага – серце Європи</h2>
                 <p>Прага — одна з найстаріших та найкрасивіших столиць Європи. Її історія налічує понад 1 100 років. 
                 Колись тут правили чеські королі та імператори Священної Римської імперії. Старе місто Праги — справжній музей під відкритим небом.</p>
-                
-                <ul>
-                    <li>🕍 <b>Карлів міст</b> — один з найвідоміших мостів світу, побудований у 14 столітті.</li>
-                    <li>⛪ <b>Празький град</b> — найбільший замковий комплекс у світі, офіційна резиденція президента Чехії.</li>
-                    <li>🕰️ <b>Астрономічний годинник</b> на Староміській площі — працює з 1410 року!</li>
-                    <li>🌉 Вузькі середньовічні вулички, річка Влтава та готичні собори створюють магічну атмосферу.</li>
-                </ul>
-
                 <img src="https://i.imgur.com/4pdqvjo.jpg" alt="Прага">
             `,
             kralupy: `
                 <h2>Кралупи над Влтавою</h2>
                 <p>Кралупи над Влтавою — затишне містечко недалеко від Праги, де я буду жити під час мандрівки. 
                 Воно розташоване на мальовничому березі річки Влтава та має свою унікальну атмосферу.</p>
-
-                <ul>
-                    <li>🚶 Прогулянки набережною вздовж Влтави</li>
-                    <li>🏞️ Зелень, парки, спокій і тиша</li>
-                    <li>🛤️ Звідси легко дістатися до Праги потягом за 30 хвилин</li>
-                    <li>🕊️ Ідеальне місце для відпочинку після прогулянок столицею</li>
-                </ul>
-
                 <img src="https://i.imgur.com/Ap21f7j.jpeg" alt="Кралупи над Влтавою">
             `
         };
@@ -223,8 +232,4 @@
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-            countdown.innerHTML = `До поїздки залишилося: <span>${days} днів</span>, <span>${hours} годин</span>, <span>${minutes} хвилин</span>`;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 
+            countdown.innerHTML = `До поїздки залишилося: <span>${days} днів</span>, <span>${hours} годин</span>, <span>${minutes}
