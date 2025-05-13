@@ -9,20 +9,32 @@
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
             color: #fff;
-            background: linear-gradient(270deg, #004e92, #000428);
-            background-size: 600% 600%;
-            animation: gradient 15s ease infinite;
+            overflow: hidden;
+            background: linear-gradient(270deg, #1c1c3c, #2b5876);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
 
         header {
             text-align: center;
             padding: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            animation: textColorChange 5s infinite alternate;
+        }
+
+        @keyframes textColorChange {
+            0%   { color: #FFD700; }
+            50%  { color: #00FFFF; }
+            100% { color: #FF69B4; }
         }
 
         main {
@@ -31,6 +43,8 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
+            position: relative;
+            z-index: 2;
         }
 
         button {
@@ -40,13 +54,13 @@
             border-radius: 12px;
             font-size: 1em;
             cursor: pointer;
-            background-color: #ffffff25;
+            background-color: #ffffff30;
             color: #fff;
             transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #ffffff40;
+            background-color: #ffffff60;
         }
 
         .section-content {
@@ -57,16 +71,36 @@
             width: 100%;
             border-radius: 10px;
             margin-top: 15px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
 
         h2 {
-            color: #ffd700;
+            color: #FFD700;
         }
 
         .countdown {
             font-size: 1.2em;
             margin-top: 10px;
             color: #90ee90;
+        }
+
+        .particle {
+            position: fixed;
+            top: -10px;
+            background: white;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -80,34 +114,43 @@
     <main>
         <div style="text-align:center;">
             <button onclick="showSection('prague')">Прага</button>
-            <button onclick="showSection('brno')">Брно</button>
-            <button onclick="showSection('castles')">Замки</button>
+            <button onclick="showSection('kralupy')">Кралупи над Влтавою</button>
         </div>
 
         <div id="content" class="section-content">
-            <p>Натисни кнопку, щоб дізнатися більше про мої плани у Чехії!</p>
+            <p>Натисни кнопку, щоб дізнатися більше про мої плани в Чехії!</p>
         </div>
     </main>
 
     <script>
         const sections = {
             prague: `
-                <h2>Прага</h2>
-                <p>У столиці Чехії я хочу побачити Карлів міст, Празький град, Годинникову вежу та старе місто. 
-                Прага — це як справжня казка, з вузькими вуличками, готичними церквами та неймовірною архітектурою.</p>
+                <h2>Прага – серце Європи</h2>
+                <p>Прага — одна з найстаріших та найкрасивіших столиць Європи. Її історія налічує понад 1 100 років. 
+                Колись тут правили чеські королі та імператори Священної Римської імперії. Старе місто Праги — справжній музей під відкритим небом.</p>
+                
+                <ul>
+                    <li>🕍 <b>Карлів міст</b> — один з найвідоміших мостів світу, побудований у 14 столітті.</li>
+                    <li>⛪ <b>Празький град</b> — найбільший замковий комплекс у світі, офіційна резиденція президента Чехії.</li>
+                    <li>🕰️ <b>Астрономічний годинник</b> на Староміській площі — працює з 1410 року!</li>
+                    <li>🌉 Вузькі середньовічні вулички, річка Влтава та готичні собори створюють магічну атмосферу.</li>
+                </ul>
+
                 <img src="https://i.imgur.com/4pdqvjo.jpg" alt="Прага">
             `,
-            brno: `
-                <h2>Брно</h2>
-                <p>Це друге за розміром місто Чехії, де я хочу побувати в старовинній фортеці Шпільберк, 
-                покататися на трамваї та подивитись на сучасне життя чехів за межами столиці.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Brno_View_from_Špilberk_2.jpg/800px-Brno_View_from_Špilberk_2.jpg" alt="Брно">
-            `,
-            castles: `
-                <h2>Чеські замки</h2>
-                <p>Я мрію побачити справжні середньовічні замки — Карлштейн, Крумлов та інші. Вони неймовірно красиві, 
-                наче з фільмів про лицарів і принцес. У Чехії понад 2000 замків — це справжнє королівство!</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Karlstejn_castle.jpg" alt="Карлштейн">
+            kralupy: `
+                <h2>Кралупи над Влтавою</h2>
+                <p>Кралупи над Влтавою — затишне містечко недалеко від Праги, де я буду жити під час мандрівки. 
+                Воно розташоване на мальовничому березі річки Влтава та має свою унікальну атмосферу.</p>
+
+                <ul>
+                    <li>🚶 Прогулянки набережною вздовж Влтави</li>
+                    <li>🏞️ Зелень, парки, спокій і тиша</li>
+                    <li>🛤️ Звідси легко дістатися до Праги потягом за 30 хвилин</li>
+                    <li>🕊️ Ідеальне місце для відпочинку після прогулянок столицею</li>
+                </ul>
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kralupy_nad_Vltavou%2C_n%C3%A1dra%C5%BE%C3%AD.jpg/800px-Kralupy_nad_Vltavou%2C_n%C3%A1dra%C5%BE%C3%AD.jpg" alt="Кралупи над Влтавою">
             `
         };
 
@@ -115,7 +158,7 @@
             document.getElementById('content').innerHTML = sections[key];
         }
 
-        // Таймер до поїздки
+        // Таймер
         const tripDate = new Date("2025-06-15T00:00:00");
         const countdown = document.getElementById("countdown");
 
@@ -137,6 +180,23 @@
 
         updateCountdown();
         setInterval(updateCountdown, 60000);
+
+        // Падаючі частинки
+        function createParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (2 + Math.random() * 5) + 's';
+                particle.style.width = particle.style.height = (2 + Math.random() * 4) + 'px';
+                document.body.appendChild(particle);
+                setTimeout(() => {
+                    particle.remove();
+                }, 7000);
+            }
+        }
+
+        setInterval(createParticles, 1000);
     </script>
 
 </body>
