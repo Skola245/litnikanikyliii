@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мої літні канікули</title>
+    <title>Моя подорож до Чехії</title>
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
             color: #fff;
-            background: linear-gradient(270deg, #3a1c71, #d76d77, #ffaf7b);
+            background: linear-gradient(270deg, #004e92, #000428);
             background-size: 600% 600%;
-            animation: gradient 10s ease infinite;
+            animation: gradient 15s ease infinite;
         }
 
         @keyframes gradient {
@@ -26,21 +26,21 @@
         }
 
         main {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
         }
 
         button {
             margin: 10px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1em;
             cursor: pointer;
-            background-color: #ffffff20;
+            background-color: #ffffff25;
             color: #fff;
             transition: background-color 0.3s;
         }
@@ -52,55 +52,91 @@
         .section-content {
             margin-top: 20px;
         }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        h2 {
+            color: #ffd700;
+        }
+
+        .countdown {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #90ee90;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Як я проведу свої літні канікули після 30 травня</h1>
+        <h1>Моя поїздка до Чехії 🇨🇿</h1>
+        <div class="countdown" id="countdown"></div>
     </header>
 
     <main>
         <div style="text-align:center;">
-            <button onclick="showSection('sea')">Поїздка на море</button>
-            <button onclick="showSection('village')">Село у бабусі</button>
-            <button onclick="showSection('friends')">Час з друзями</button>
-            <button onclick="showSection('hobby')">Мої хобі</button>
+            <button onclick="showSection('prague')">Прага</button>
+            <button onclick="showSection('brno')">Брно</button>
+            <button onclick="showSection('castles')">Замки</button>
         </div>
 
         <div id="content" class="section-content">
-            <p>Натисни одну з кнопок, щоб побачити мої плани на літо!</p>
+            <p>Натисни кнопку, щоб дізнатися більше про мої плани у Чехії!</p>
         </div>
     </main>
 
     <script>
         const sections = {
-            sea: `
-                <h2>Поїздка на море</h2>
-                <p>Після 30 травня я планую поїхати з родиною до Одеси або Залізного Порту. 
-                Ми будемо жити біля пляжу, купатися, засмагати і смакувати морожене. 
-                Увечері — прогулянки набережною та фотографії заходу сонця.</p>
+            prague: `
+                <h2>Прага</h2>
+                <p>У столиці Чехії я хочу побачити Карлів міст, Празький град, Годинникову вежу та старе місто. 
+                Прага — це як справжня казка, з вузькими вуличками, готичними церквами та неймовірною архітектурою.</p>
+                <img src="https://i.imgur.com/4pdqvjo.jpg" alt="Прага">
             `,
-            village: `
-                <h2>Село у бабусі</h2>
-                <p>Декілька тижнів я проведу в селі у бабусі. Там я допомагатиму по господарству, 
-                кататимусь на велосипеді, їстиму свіжі фрукти просто з саду. А ще — буду ловити рибу на озері!</p>
+            brno: `
+                <h2>Брно</h2>
+                <p>Це друге за розміром місто Чехії, де я хочу побувати в старовинній фортеці Шпільберк, 
+                покататися на трамваї та подивитись на сучасне життя чехів за межами столиці.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Brno_View_from_Špilberk_2.jpg/800px-Brno_View_from_Špilberk_2.jpg" alt="Брно">
             `,
-            friends: `
-                <h2>Час з друзями</h2>
-                <p>Звісно, я не забув про своїх друзів! Ми плануємо ходити в кіно, грати у футбол на майданчику, 
-                влаштовувати пікніки, гуляти вечорами й навіть організувати невеликий табір з наметами.</p>
-            `,
-            hobby: `
-                <h2>Мої хобі</h2>
-                <p>У вільний час я буду малювати, грати на гітарі, вивчати нові пісні та навіть програмувати власні ігри.
-                Можливо, створю свій перший блог або YouTube-канал про літо!</p>
+            castles: `
+                <h2>Чеські замки</h2>
+                <p>Я мрію побачити справжні середньовічні замки — Карлштейн, Крумлов та інші. Вони неймовірно красиві, 
+                наче з фільмів про лицарів і принцес. У Чехії понад 2000 замків — це справжнє королівство!</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Karlstejn_castle.jpg" alt="Карлштейн">
             `
         };
 
         function showSection(key) {
             document.getElementById('content').innerHTML = sections[key];
         }
+
+        // Таймер до поїздки
+        const tripDate = new Date("2025-06-15T00:00:00");
+        const countdown = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = tripDate - now;
+
+            if (diff <= 0) {
+                countdown.textContent = "Я вже в Чехії!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+            countdown.textContent = `До поїздки залишилося: ${days} днів, ${hours} годин, ${minutes} хвилин`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
     </script>
 
 </body>
