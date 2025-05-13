@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Моя подорож до Чехії</title>
     <style>
+        /* Фон та ефекти для фону */
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
@@ -13,8 +14,6 @@
             background: linear-gradient(270deg, #1c1c3c, #2b5876);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-
-            /* Курсор у вигляді кухля пива */
             cursor: url('https://i.imgur.com/FIBD5YX.png'), auto;
         }
 
@@ -24,20 +23,44 @@
             100% {background-position: 0% 50%;}
         }
 
-        header {
-            text-align: center;
-            padding: 40px;
+        /* 3D ефект для фону */
+        .galaxy {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/zEz6dDJ.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: moveGalaxy 50s linear infinite;
+            z-index: -1;
         }
 
-        h1 {
-            font-size: 2.5em;
-            animation: textColorChange 5s infinite alternate;
+        @keyframes moveGalaxy {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-1000px, 0, 0); }
         }
 
-        @keyframes textColorChange {
-            0%   { color: #FFD700; }
-            50%  { color: #00FFFF; }
-            100% { color: #FF69B4; }
+        /* Заголовки з неоновим ефектом */
+        h1, h2 {
+            font-size: 3em;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+            animation: neonText 1.5s alternate infinite;
+        }
+
+        @keyframes neonText {
+            0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+            100% { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff; }
+        }
+
+        /* Анімація при прокручуванні */
+        .section {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .section.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         main {
@@ -48,6 +71,7 @@
             border-radius: 15px;
             position: relative;
             z-index: 2;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         button {
@@ -66,27 +90,34 @@
             background-color: #ffffff60;
         }
 
-        .section-content {
-            margin-top: 20px;
-        }
-
         img {
             width: 100%;
             border-radius: 10px;
             margin-top: 15px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         h2 {
             color: #FFD700;
         }
 
+        /* Динамічний таймер */
         .countdown {
-            font-size: 1.2em;
+            font-size: 2em;
             margin-top: 10px;
             color: #90ee90;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
         }
 
+        .countdown span {
+            display: inline-block;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 0 0 15px #fff, 0 0 25px #fff;
+        }
+
+        /* Падаючі частинки - пивні кружки */
         .particle {
             position: fixed;
             top: -10px;
@@ -105,9 +136,45 @@
                 opacity: 0;
             }
         }
+
+        /* Падаючі пивні кружки */
+        .particle:after {
+            content: '🍺';
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        /* Величезні анімації */
+        .big-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6em;
+            color: #ff00ff;
+            animation: bigAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes bigAnimation {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Додавання фонового ефекту -->
+    <div class="galaxy"></div>
 
     <header>
         <h1>Моя поїздка до Чехії 🇨🇿</h1>
@@ -120,9 +187,12 @@
             <button onclick="showSection('kralupy')">Кралупи над Влтавою</button>
         </div>
 
-        <div id="content" class="section-content">
+        <div id="content" class="section-content section">
             <p>Натисни кнопку, щоб дізнатися більше про мої плани в Чехії!</p>
         </div>
+
+        <!-- Величезна анімація -->
+        <div class="big-animation">Подорож до Чехії!</div>
     </main>
 
     <script>
@@ -155,52 +225,4 @@
 
                 <img src="https://i.imgur.com/Ap21f7j.jpeg" alt="Кралупи над Влтавою">
             `
-        };
-
-        function showSection(key) {
-            document.getElementById('content').innerHTML = sections[key];
-        }
-
-        // Таймер
-        const tripDate = new Date("2025-05-31T00:00:00");
-        const countdown = document.getElementById("countdown");
-
-        function updateCountdown() {
-            const now = new Date();
-            const diff = tripDate - now;
-
-            if (diff <= 0) {
-                countdown.textContent = "Я вже в Чехії!";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-            countdown.textContent = `До поїздки залишилося: ${days} днів, ${hours} годин, ${minutes} хвилин`;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 60000);
-
-        // Падаючі частинки
-        function createParticles() {
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDuration = (2 + Math.random() * 5) + 's';
-                particle.style.width = particle.style.height = (2 + Math.random() * 4) + 'px';
-                document.body.appendChild(particle);
-                setTimeout(() => {
-                    particle.remove();
-                }, 7000);
-            }
-        }
-
-        setInterval(createParticles, 1000);
-    </script>
-
-</body>
-</html>
+       
