@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мої літні канікули</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            background: linear-gradient(270deg, #3a1c71, #d76d77, #ffaf7b);
+            background-size: 600% 600%;
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #ffffff20;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffffff40;
+        }
+
+        .section-content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Як я проведу свої літні канікули після 30 травня</h1>
+    </header>
+
+    <main>
+        <div style="text-align:center;">
+            <button onclick="showSection('sea')">Поїздка на море</button>
+            <button onclick="showSection('village')">Село у бабусі</button>
+            <button onclick="showSection('friends')">Час з друзями</button>
+            <button onclick="showSection('hobby')">Мої хобі</button>
+        </div>
+
+        <div id="content" class="section-content">
+            <p>Натисни одну з кнопок, щоб побачити мої плани на літо!</p>
+        </div>
+    </main>
+
+    <script>
+        const sections = {
+            sea: `
+                <h2>Поїздка на море</h2>
+                <p>Після 30 травня я планую поїхати з родиною до Одеси або Залізного Порту. 
+                Ми будемо жити біля пляжу, купатися, засмагати і смакувати морожене. 
+                Увечері — прогулянки набережною та фотографії заходу сонця.</p>
+            `,
+            village: `
+                <h2>Село у бабусі</h2>
+                <p>Декілька тижнів я проведу в селі у бабусі. Там я допомагатиму по господарству, 
+                кататимусь на велосипеді, їстиму свіжі фрукти просто з саду. А ще — буду ловити рибу на озері!</p>
+            `,
+            friends: `
+                <h2>Час з друзями</h2>
+                <p>Звісно, я не забув про своїх друзів! Ми плануємо ходити в кіно, грати у футбол на майданчику, 
+                влаштовувати пікніки, гуляти вечорами й навіть організувати невеликий табір з наметами.</p>
+            `,
+            hobby: `
+                <h2>Мої хобі</h2>
+                <p>У вільний час я буду малювати, грати на гітарі, вивчати нові пісні та навіть програмувати власні ігри.
+                Можливо, створю свій перший блог або YouTube-канал про літо!</p>
+            `
+        };
+
+        function showSection(key) {
+            document.getElementById('content').innerHTML = sections[key];
+        }
+    </script>
+
+</body>
+</html>
