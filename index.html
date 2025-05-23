@@ -2,91 +2,96 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Світ Witcher 3</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
-      overflow: hidden;
-      background: url('https://i.imgur.com/IYoJuwj.jpeg') no-repeat center center fixed;
+      background: url('https://cdnb.artstation.com/p/assets/images/images/012/163/007/large/nikolay-kulakov-ciri-witcher.jpg?1531423283') no-repeat center center fixed;
       background-size: cover;
+      overflow-x: hidden;
       cursor: url('https://i.imgur.com/n5WfXzn.png'), auto;
     }
-
     header {
       text-align: center;
       padding: 40px;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px #bda85a;
     }
-
     h1 {
       font-size: 3em;
       color: #bda85a;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.85);
+      margin: 0;
     }
-
     main {
       max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
+      margin: 20px auto 60px;
+      padding: 25px;
+      background-color: rgba(0, 0, 0, 0.75);
       border-radius: 15px;
+      box-shadow: 0 0 20px #bda85a;
       position: relative;
       z-index: 2;
     }
-
     button {
-      margin: 10px;
-      padding: 12px 24px;
+      margin: 10px 15px;
+      padding: 12px 28px;
+      font-size: 1.15em;
+      font-weight: 600;
+      color: #fff;
+      background: transparent;
       border: 2px solid #bda85a;
       border-radius: 12px;
-      font-size: 1.2em;
       cursor: pointer;
-      background-color: transparent;
-      color: #fff;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: background-color 0.3s, transform 0.25s, box-shadow 0.3s;
+      user-select: none;
     }
-
     button:hover {
       background-color: #bda85a;
+      box-shadow: 0 0 15px #bda85a;
       transform: scale(1.1);
     }
-
     .section-content {
-      margin-top: 20px;
+      margin-top: 25px;
+      line-height: 1.6;
+      font-size: 1.1em;
     }
-
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
-
     h2 {
       color: #ffd700;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
     }
-
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 18px;
+      box-shadow: 0 0 25px #bda85a;
+      transition: transform 0.4s ease;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
     .countdown {
-      font-size: 1.2em;
-      margin-top: 10px;
+      font-size: 1.3em;
+      margin-top: 15px;
       color: #90ee90;
+      font-weight: 600;
+      text-shadow: 0 0 6px #90ee90;
     }
-
+    /* Частинки - легкий магічний ефект */
     .particle {
       position: fixed;
-      top: -10px;
       background: #bda85a;
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      opacity: 0.8;
+      opacity: 0.7;
       animation: fall linear infinite;
       z-index: 1;
+      pointer-events: none;
     }
-
     @keyframes fall {
       to {
         transform: translateY(110vh);
@@ -117,24 +122,24 @@
     const sections = {
       world: `
         <h2>Світ Witcher 3</h2>
-        <p>Це відкритий світ, де пригоди чекають на кожному кроці. Ліси, руїни, міста — все створено з великою увагою до деталей.</p>
+        <p>Це величезний відкритий світ, наповнений магією, пригодами і небезпеками. Ліси, замки, міста і дивовижні пейзажі створені з великою увагою до деталей.</p>
         <ul>
-          <li>🌲 Темерія, Велен, Скелліге — величезні відкриті території</li>
-          <li>🏰 Новіграад — місто повне політики, небезпек і можливостей</li>
-          <li>🧙 Магія, монстри, алхімія та мечі — основа виживання</li>
+          <li>🌲 Темерія, Велен і Скелліге — регіони з унікальною атмосферою</li>
+          <li>🏰 Новіграад — велике місто політики та інтриг</li>
+          <li>🧙 Магія, монстри і легенди, які оживають навколо</li>
         </ul>
-        <img src="https://i.imgur.com/fzM3Vk4.jpeg" alt="Світ Witcher 3">
+        <img src="https://static.wikia.nocookie.net/witcher/images/1/1f/The_Witcher_3_Wild_Hunt_-_Novigrad_Screenshot_6.jpg" alt="Світ Witcher 3 - Новіграад">
       `,
       characters: `
         <h2>Персонажі</h2>
-        <p>Вони не просто герої — вони мають характер, історії та вибори.</p>
+        <p>Головні герої гри, кожен зі своєю історією та харизмою:</p>
         <ul>
-          <li>⚔️ <b>Ґеральт із Рівії</b> — професійний відьмак</li>
-          <li>🧙‍♀️ <b>Єннефер</b> — сильна і розумна чародійка</li>
-          <li>🗡️ <b>Цірі</b> — дитина старшої крові, могутня воїтелька</li>
-          <li>🎶 <b>Данделіон</b> — поет, співак і найкращий друг</li>
+          <li>⚔️ <b>Ґеральт із Рівії</b> — відьмак, головний герой, мисливець на чудовиськ</li>
+          <li>🧙‍♀️ <b>Єннефер з Венґерберґа</b> — могутня і загадкова чародійка</li>
+          <li>🗡️ <b>Цірі</b> — дівчина з унікальними здібностями</li>
+          <li>🎶 <b>Данделіон</b> — бард та друг Ґеральта</li>
         </ul>
-        <img src="https://i.imgur.com/oYbPjRr.jpeg" alt="Персонажі Witcher 3">
+        <img src="https://static.wikia.nocookie.net/witcher/images/d/d5/Ciri_with_her_sword.jpg" alt="Цірі - Witcher 3">
       `
     };
 
@@ -142,7 +147,7 @@
       document.getElementById('content').innerHTML = sections[key];
     }
 
-    // Таймер до події (можеш змінити дату)
+    // Таймер до події
     const tripDate = new Date("2025-05-31T00:00:00");
     const countdown = document.getElementById("countdown");
 
@@ -165,15 +170,17 @@
     updateCountdown();
     setInterval(updateCountdown, 60000);
 
-    // Частинки (ефект)
+    // Частинки - легкий магічний ефект
     function createParticles() {
       for (let i = 0; i < 40; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.animationDuration = (2 + Math.random() * 4) + 's';
+        particle.style.top = Math.random() * -10 + 'vh';
+        particle.style.animationDuration = (3 + Math.random() * 4) + 's';
+        particle.style.width = particle.style.height = (3 + Math.random() * 5) + 'px';
         document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 6000);
+        setTimeout(() => particle.remove(), 7000);
       }
     }
 
