@@ -1,171 +1,184 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Моя подорож у світ Witcher 3</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            color: #fff;
-            overflow: hidden;
-            background: url('https://i.imgur.com/4pdqvjo.jpg') no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-            cursor: url('https://i.imgur.com/FIBD5YX.png'), auto;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Світ Witcher 3</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      background: url('https://i.imgur.com/IYoJuwj.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      cursor: url('https://i.imgur.com/n5WfXzn.png'), auto;
+    }
 
-        header {
-            text-align: center;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 2px solid #bda85a;
-        }
+    header {
+      text-align: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.6);
+    }
 
-        h1 {
-            font-size: 3em;
-            color: #bda85a;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
+    h1 {
+      font-size: 3em;
+      color: #bda85a;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
 
-        main {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            position: relative;
-            z-index: 2;
-        }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      position: relative;
+      z-index: 2;
+    }
 
-        button {
-            margin: 10px;
-            padding: 12px 24px;
-            border: 2px solid #bda85a;
-            border-radius: 12px;
-            font-size: 1.2em;
-            cursor: pointer;
-            background-color: transparent;
-            color: #fff;
-            transition: background-color 0.3s, transform 0.2s;
-        }
+    button {
+      margin: 10px;
+      padding: 12px 24px;
+      border: 2px solid #bda85a;
+      border-radius: 12px;
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: transparent;
+      color: #fff;
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-        button:hover {
-            background-color: #bda85a;
-            transform: scale(1.1);
-        }
+    button:hover {
+      background-color: #bda85a;
+      transform: scale(1.1);
+    }
 
-        .section-content {
-            margin-top: 20px;
-        }
+    .section-content {
+      margin-top: 20px;
+    }
 
-        img {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 15px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
 
-        h2 {
-            color: #bda85a;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
+    h2 {
+      color: #ffd700;
+    }
 
-        .countdown {
-            font-size: 1.2em;
-            margin-top: 10px;
-            color: #90ee90;
-        }
+    .countdown {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #90ee90;
+    }
 
-        .particle {
-            position: fixed;
-            top: -10px;
-            background: #bda85a;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-            z-index: 1;
-        }
+    .particle {
+      position: fixed;
+      top: -10px;
+      background: #bda85a;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
 
-        @keyframes fall {
-            to {
-                transform: translateY(110vh);
-                opacity: 0;
-            }
-        }
-
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-    </style>
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Моя подорож у світ Witcher 3 ⚔️</h1>
-        <div class="countdown" id="countdown"></div>
-    </header>
+  <header>
+    <h1>Моя подорож у світ Witcher 3 ⚔️</h1>
+    <div class="countdown" id="countdown"></div>
+  </header>
 
-    <main>
-        <div style="text-align:center;">
-            <button onclick="showSection('world')">Світ Witcher 3</button>
-            <button onclick="showSection('characters')">Персонажі</button>
-        </div>
+  <main>
+    <div style="text-align:center;">
+      <button onclick="showSection('world')">Світ Witcher 3</button>
+      <button onclick="showSection('characters')">Персонажі</button>
+    </div>
 
-        <div id="content" class="section-content">
-            <p>Ознайомся з фантастичним світом Witcher 3!</p>
-        </div>
-    </main>
+    <div id="content" class="section-content">
+      <p>Ознайомся з фантастичним світом Witcher 3!</p>
+    </div>
+  </main>
 
-    <script>
-        const sections = {
-            world: `
-                <h2>Світ Witcher 3</h2>
-                <p>Це відкритий світ, де пригоди чекають на кожному кроці. Ліси, руїни, міста — все створено з великою увагою до деталей.</p>
-                <ul>
-                    <li>🌲 Велике Королівство Темерія та околиці</li>
-                    <li>🌊 Острови Скелліге — скелясті, дикі та красиві</li>
-                    <li>🏰 Новіграад — найбільше місто в грі, повне інтриг</li>
-                    <li>🧟 Сотні завдань, битв з чудовиськами та таємниць</li>
-                </ul>
-                <img src="https://i.imgur.com/L6tZ8Mb.jpeg" alt="Світ Witcher 3">
-            `,
-            characters: `
-                <h2>Головні персонажі</h2>
-                <p>У грі безліч яскравих героїв. Деякі з них:</p>
-                <ul>
-                    <li>⚔️ <b>Ґеральт із Рівії</b> — відьмак, мисливець на чудовиськ</li>
-                    <li>🧙‍♀️ <b>Єннефер з Венґерберґа</b> — могутня чародійка</li>
-                    <li>🎯 <b>Цірі</b> — обрана дитина з неймовірною силою</li>
-                    <li>🎭 <b>Данделіон</b> — бард, друг Ґеральта та майстер пригод</li>
-                </ul>
-                <img src="https://i.imgur.com/0vLknWv.jpeg" alt="Персонажі Witcher 3">
-            `
-        };
+  <script>
+    const sections = {
+      world: `
+        <h2>Світ Witcher 3</h2>
+        <p>Це відкритий світ, де пригоди чекають на кожному кроці. Ліси, руїни, міста — все створено з великою увагою до деталей.</p>
+        <ul>
+          <li>🌲 Темерія, Велен, Скелліге — величезні відкриті території</li>
+          <li>🏰 Новіграад — місто повне політики, небезпек і можливостей</li>
+          <li>🧙 Магія, монстри, алхімія та мечі — основа виживання</li>
+        </ul>
+        <img src="https://i.imgur.com/fzM3Vk4.jpeg" alt="Світ Witcher 3">
+      `,
+      characters: `
+        <h2>Персонажі</h2>
+        <p>Вони не просто герої — вони мають характер, історії та вибори.</p>
+        <ul>
+          <li>⚔️ <b>Ґеральт із Рівії</b> — професійний відьмак</li>
+          <li>🧙‍♀️ <b>Єннефер</b> — сильна і розумна чародійка</li>
+          <li>🗡️ <b>Цірі</b> — дитина старшої крові, могутня воїтелька</li>
+          <li>🎶 <b>Данделіон</b> — поет, співак і найкращий друг</li>
+        </ul>
+        <img src="https://i.imgur.com/oYbPjRr.jpeg" alt="Персонажі Witcher 3">
+      `
+    };
 
-        function showSection(key) {
-            document.getElementById('content').innerHTML = sections[key];
-        }
+    function showSection(key) {
+      document.getElementById('content').innerHTML = sections[key];
+    }
 
-        // Таймер
-        const tripDate = new Date("2025-05-31T00:00:00");
-        const countdown = document.getElementById("countdown");
+    // Таймер до події (можеш змінити дату)
+    const tripDate = new Date("2025-05-31T00:00:00");
+    const countdown = document.getElementById("countdown");
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = tripDate - now;
+    function updateCountdown() {
+      const now = new Date();
+      const diff = tripDate - now;
 
-            if (diff <= 0) {
-                countdown.textContent = "Я вже в Чехії!";
-                return;
-            }
+      if (diff <= 0) {
+        countdown.textContent = "Час вирушати у пригоду!";
+        return;
+      }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 
-::contentReference[oaicite:0]{index=0}
- 
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      countdown.textContent = `До подорожі залишилось: ${days} дн, ${hours} год, ${minutes} хв`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // Частинки (ефект)
+    function createParticles() {
+      for (let i = 0; i < 40; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (2 + Math.random() * 4) + 's';
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 6000);
+      }
+    }
+
+    setInterval(createParticles, 1500);
+  </script>
+
+</body>
+</html>
